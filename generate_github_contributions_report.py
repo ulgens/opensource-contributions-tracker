@@ -71,6 +71,8 @@ def get_all_pages(url, params, max_retries=3, backoff_factor=0.3):
                 else:
                     logger.critical(f"Max retries exceeded for URL: {url}")
                     raise e  # Raise the exception if max retries are exceeded
+            # rate limit to max 60 requests per minute
+            time.sleep(1)
     return results
 
 
