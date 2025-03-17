@@ -1,0 +1,30 @@
+{
+    "start_date": "1970-01-01",
+    "users": [
+        "nihaljain"
+    ],
+    "project_to_repo_dict": {
+        "HBASE": [
+            "apache/hbase",
+            "apache/hbase-connectors",
+            "apache/hbase-thirdparty",
+            "apache/hbase-operator-tools"
+        ],
+        "PHOENIX": [
+            "apache/phoenix",
+            "apache/phoenix-omid",
+            "apache/phoenix-queryserver",
+            "apache/phoenix-thirdparty"
+        ],
+        "HADOOP": [
+            "apache/hadoop"
+        ],
+        "ZOOKEEPER": [
+            "apache/zookeeper"
+        ],
+        "PINOT": [
+            "pinot-contrib/pinot-docs",
+            "apache/pinot"
+        ]
+    }
+}
