@@ -1,4 +1,4 @@
-name: Nightly Job
+name: Open Source Contribution Tracker Job
 
 on:
   schedule:

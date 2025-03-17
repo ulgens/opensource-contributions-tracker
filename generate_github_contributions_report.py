@@ -188,7 +188,7 @@ def process_github_data(start_date, users, project_to_repo_dict):
                         "Repository": repo,
                         "User": user,
                         "Commits": commit_count,
-                        "Pull Requests": pr_count,
+                        "Pull Requests (Open)": pr_count,
                         "Overall Contribution": commit_count + pr_count
                     })
     except Exception as e:
@@ -223,7 +223,7 @@ def filter_contributions(github_data_df):
     Returns:
         DataFrame: A filtered DataFrame with non-zero contributions.
     """
-    filtered_df = github_data_df[(github_data_df['Commits'] > 0) | (github_data_df['Pull Requests'] > 0)]
+    filtered_df = github_data_df[(github_data_df['Commits'] > 0) | (github_data_df['Pull Requests (Open)'] > 0)]
     logger.info("Filtered out entries with zero contributions")
     return filtered_df
 
@@ -238,13 +238,13 @@ def group_contributions(filtered_df):
     Returns:
         tuple: Two DataFrames, one grouped by 'User' and the other by 'Project Name'.
     """
-    user_counts_df = filtered_df.groupby('User')[['Commits', 'Pull Requests']].sum().reset_index()
-    user_counts_df['Overall Contribution'] = user_counts_df['Commits'] + user_counts_df['Pull Requests']
+    user_counts_df = filtered_df.groupby('User')[['Commits', 'Pull Requests (Open)']].sum().reset_index()
+    user_counts_df['Overall Contribution'] = user_counts_df['Commits'] + user_counts_df['Pull Requests (Open)']
     user_counts_df = user_counts_df[user_counts_df['Overall Contribution'] > 0]
     logger.info("Grouped by 'User' and calculated overall contributions")
 
-    project_counts_df = filtered_df.groupby('Project Name')[['Commits', 'Pull Requests']].sum().reset_index()
-    project_counts_df['Overall Contribution'] = project_counts_df['Commits'] + project_counts_df['Pull Requests']
+    project_counts_df = filtered_df.groupby('Project Name')[['Commits', 'Pull Requests (Open)']].sum().reset_index()
+    project_counts_df['Overall Contribution'] = project_counts_df['Commits'] + project_counts_df['Pull Requests (Open)']
     project_counts_df = project_counts_df[project_counts_df['Overall Contribution'] > 0]
     logger.info("Grouped by 'Project Name' and calculated overall contributions")
 
@@ -265,12 +265,12 @@ def create_pie_chart(df, field, filename, percentage=-1):
         Exception: If an error occurs while creating the pie chart.
     """
     try:
-        # Group by the field and sum the 'Commits' and 'Pull Requests'
-        df_copy = df.groupby(field)[['Commits', 'Pull Requests']].sum().reset_index()
+        # Group by the field and sum the 'Commits' and 'Pull Requests (Open)'
+        df_copy = df.groupby(field)[['Commits', 'Pull Requests (Open)']].sum().reset_index()
         logger.info(f"Grouped data by {field}")
 
-        # Add a new field 'Overall Contribution' which is the sum of 'Commits' and 'Pull Requests'
-        df_copy['Overall Contribution'] = df_copy['Commits'] + df_copy['Pull Requests']
+        # Add a new field 'Overall Contribution' which is the sum of 'Commits' and 'Pull Requests (Open)'
+        df_copy['Overall Contribution'] = df_copy['Commits'] + df_copy['Pull Requests (Open)']
         logger.info("Calculated 'Overall Contribution'")
 
         # Find values with count less than a given percentage of the maximum count
@@ -349,11 +349,11 @@ def create_markdown_report(github_data_df, user_counts_df, project_counts_df, ou
 
             # Add summary table
             f.write("## Summary of Contributions by each user\n\n")
-            f.write("| User | Commits | Pull Requests | Overall Contribution |\n")
-            f.write("|------|---------|---------------|----------------------|\n")
+            f.write("| User | Commits | Pull Requests (Open) | Overall Contribution |\n")
+            f.write("|------|---------|----------------------|----------------------|\n")
             for _, row in user_counts_df.iterrows():
                 f.write(
-                    f"| {row['User']} | {row['Commits']} | {row['Pull Requests']} | {row['Overall Contribution']} |\n")
+                    f"| {row['User']} | {row['Commits']} | {row['Pull Requests (Open)']} | {row['Overall Contribution']} |\n")
 
             # Add pie chart image
             user_wise_contribution_fname = "user_wise_contribution.png"
@@ -363,11 +363,11 @@ def create_markdown_report(github_data_df, user_counts_df, project_counts_df, ou
 
             # Add summary table for project wise
             f.write("\n## Summary of Contributions by each project\n\n")
-            f.write("| Project Name | Commits | Pull Requests | Overall Contribution |\n")
-            f.write("|--------------|---------|---------------|----------------------|\n")
+            f.write("| Project Name | Commits | Pull Requests (Open) | Overall Contribution |\n")
+            f.write("|--------------|---------|----------------------|----------------------|\n")
             for _, row in project_counts_df.iterrows():
                 f.write(
-                    f"| {row['Project Name']} | {row['Commits']} | {row['Pull Requests']} | {row['Overall Contribution']} |\n")
+                    f"| {row['Project Name']} | {row['Commits']} | {row['Pull Requests (Open)']} | {row['Overall Contribution']} |\n")
 
             project_wise_contribution_fname = "project_wise_contribution.png"
             create_pie_chart(project_counts_df, 'Project Name',
@@ -376,11 +376,11 @@ def create_markdown_report(github_data_df, user_counts_df, project_counts_df, ou
 
             # Add detailed contribution data for each user, use non_zero_df
             f.write("\n## Detailed Contributions\n\n")
-            f.write("| Project Name | Repository | User | Commits | Pull Requests | Overall Contribution |\n")
-            f.write("|--------------|------------|------|---------|---------------|----------------------|\n")
+            f.write("| Project Name | Repository | User | Commits | Pull Requests (Open) | Overall Contribution |\n")
+            f.write("|--------------|------------|------|---------|----------------------|----------------------|\n")
             for _, row in github_data_df.sort_values(by=['User']).iterrows():
                 f.write(
-                    f"| {row['Project Name']} | {row['Repository']} | {row['User']} | {row['Commits']} | {row['Pull Requests']} | {row['Overall Contribution']} |\n")
+                    f"| {row['Project Name']} | {row['Repository']} | {row['User']} | {row['Commits']} | {row['Pull Requests (Open)']} | {row['Overall Contribution']} |\n")
 
         logger.info(f"Markdown report created successfully: {output_filename}")
     except Exception as e:
@@ -388,7 +388,8 @@ def create_markdown_report(github_data_df, user_counts_df, project_counts_df, ou
         raise
 
 
-def generate_github_contributions_report(github_conf_path="input/github.json", output_dir="output/", report_fname="github_contributions_report.md"):
+def generate_github_contributions_report(github_conf_path="input/github.json", output_dir="output/",
+                                         report_fname="github_contributions_report.md"):
     """
     Generate a GitHub contributions report by reading input data, processing it, and creating a markdown report.
 
@@ -438,6 +439,7 @@ def generate_github_contributions_report(github_conf_path="input/github.json", o
     except Exception as e:
         logger.error(f"An error occurred: {e}")
         raise
+
 
 if __name__ == "__main__":
     generate_github_contributions_report()
