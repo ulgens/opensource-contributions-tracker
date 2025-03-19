@@ -77,6 +77,24 @@ def get_all_pages(url, params, max_retries=3, backoff_factor=0.3):
     return results
 
 
+def get_contributors(repo, per_page=100):
+    """
+    Retrieve contributors for a repository.
+
+    Args:
+        repo (str): The repository name.
+        per_page (int): The number of results per page.
+
+    Returns:
+        list: A list of contributors.
+    """
+    params = {
+        "per_page": per_page
+    }
+    contributors_url = f"{GITHUB_API_URL}/repos/{repo}/contributors"
+    return get_all_pages(contributors_url, params)
+
+
 def get_commits(user, repo, since_date, per_page=100):
     """
     Retrieve commits for a specific user in a repository since a given date.
@@ -169,6 +187,20 @@ def process_github_data(start_date, users, project_to_repo_dict):
             logger.info(f"Processing project: {project_name}")
             for repo in repo_list:
                 logger.info(f"Processing repository: {repo}")
+                # optimize code to fetch list of contributors for repo and create a subset of users who are contributors
+                # for this repo and in our list (this will reduce the number of API calls)
+                logger.info(f"Fetching contributors: {repo}")
+                contributors = get_contributors(repo)
+                contributors = [str(contributor["login"]).lower() for contributor in contributors]
+                contributors_in_users = [user for user in users if user in contributors]
+
+                # Skip processing, if we have no contributors to this repo
+                if not contributors_in_users:
+                    logger.info(f"Skipping processing for this repository as we have no contributors here: {users}, {contributors}, {contributors_in_users}")
+                    continue
+
+                logger.info(f"Only users: {contributors_in_users} contribute to the repository: {repo}")
+                logger.info(f"Fetching pull requests (open) for repository: {repo}")
                 prs = get_pull_requests(repo, state="open")
 
                 # Create a dictionary to map users to their pull requests
@@ -178,7 +210,7 @@ def process_github_data(start_date, users, project_to_repo_dict):
                     if pr["created_at"] >= start_date:
                         user_prs_dict[user_login].append(pr)
 
-                for user in users:
+                for user in contributors_in_users:
                     logger.info(f"Processing user: {user}")
                     commits = get_commits(user, repo, formatted_start_date)
                     commit_count = len(commits)
@@ -342,7 +374,7 @@ def create_markdown_report(github_data_df, user_counts_df, project_counts_df, ou
 
         with open(output_filename, 'w') as f:
             # Add title
-            f.write("# GitHub Contributions Report\n\n")
+            f.write("# OpenSource Contributions Report\n\n")
 
             # Add current time
             current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -439,6 +471,10 @@ def generate_github_contributions_report(github_conf_path="input/github.json", o
         # Create markdown report
         create_markdown_report(github_data_df, user_counts_df, project_counts_df,
                                os.path.join(output_dir, report_fname))
+
+        # Dump contribution data to an output file
+        with open("output/github_contribution_data.json", "w") as f:
+            json.dump(github_data, f, indent=4)
 
     except Exception as e:
         logger.error(f"An error occurred: {e}")
