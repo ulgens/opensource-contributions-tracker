@@ -1,0 +1,13 @@
+Project Name,Repository,User,Commits,Pull Requests (Open),Rank,Overall Contribution
+Apache HBase,apache/hbase,nihaljain,76,5,25,81
+Apache HBase,apache/hbase-connectors,nihaljain,7,1,6,8
+Apache HBase,apache/hbase-thirdparty,nihaljain,5,2,10,7
+Apache HBase,apache/hbase-operator-tools,nihaljain,13,0,4,13
+Apache Hadoop,apache/hadoop,nihaljain,1,0,-1,1
+Apache Phoenix,apache/phoenix,nihaljain,5,2,56,7
+Apache Phoenix,apache/phoenix-omid,nihaljain,10,0,10,10
+Apache Phoenix,apache/phoenix-queryserver,nihaljain,5,0,4,5
+Apache Phoenix,apache/phoenix-thirdparty,nihaljain,1,0,4,1
+Apache Pinot,pinot-contrib/pinot-docs,nihaljain,2,0,57,2
+Apache Pinot,apache/pinot,nihaljain,1,0,338,1
+Apache Zookeeper,apache/zookeeper,nihaljain,2,0,76,2
