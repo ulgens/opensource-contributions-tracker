@@ -1,5 +1,29 @@
 [
     {
+        "Project Name": "AMBARI",
+        "Repository": "apache/ambari",
+        "User": "nihaljain",
+        "Commits": 0,
+        "Pull Requests (Open)": 0,
+        "Overall Contribution": 0
+    },
+    {
+        "Project Name": "AMBARI",
+        "Repository": "apache/ambari-metrics",
+        "User": "nihaljain",
+        "Commits": 0,
+        "Pull Requests (Open)": 0,
+        "Overall Contribution": 0
+    },
+    {
+        "Project Name": "BIGTOP",
+        "Repository": "apache/bigtop",
+        "User": "nihaljain",
+        "Commits": 0,
+        "Pull Requests (Open)": 0,
+        "Overall Contribution": 0
+    },
+    {
         "Project Name": "HBASE",
         "Repository": "apache/hbase",
         "User": "nihaljain",
@@ -30,6 +54,14 @@
         "Commits": 13,
         "Pull Requests (Open)": 0,
         "Overall Contribution": 13
+    },
+    {
+        "Project Name": "HADOOP",
+        "Repository": "apache/hadoop",
+        "User": "nihaljain",
+        "Commits": 1,
+        "Pull Requests (Open)": 0,
+        "Overall Contribution": 1
     },
     {
         "Project Name": "PHOENIX",
@@ -78,6 +110,14 @@
         "Commits": 1,
         "Pull Requests (Open)": 0,
         "Overall Contribution": 1
+    },
+    {
+        "Project Name": "RANGER",
+        "Repository": "apache/ranger",
+        "User": "nihaljain",
+        "Commits": 0,
+        "Pull Requests (Open)": 0,
+        "Overall Contribution": 0
     },
     {
         "Project Name": "ZOOKEEPER",
