@@ -1,12 +1,12 @@
-# GitHub Contributions Report
+# OpenSource Contributions Report
 
-Report auto-generated on: 2025-03-19 01:40:57
+Report auto-generated on: 2025-03-19 10:16:35
 
 ## Summary of Contributions by each user
 
 | User | Commits | Pull Requests (Open) | Overall Contribution |
 |------|---------|----------------------|----------------------|
-| nihaljain | 128 | 10 | 138 |
+| nihaljain | 127 | 10 | 137 |
 
 <img src="user_wise_contribution.png" alt="Contributions: User Wise" style="width:50%;">
 
@@ -18,7 +18,6 @@ Report auto-generated on: 2025-03-19 01:40:57
 | PHOENIX | 21 | 2 | 23 |
 | PINOT | 3 | 0 | 3 |
 | ZOOKEEPER | 2 | 0 | 2 |
-| HADOOP | 1 | 0 | 1 |
 
 <img src="project_wise_contribution.png" alt="Contributions: Project Wise" style="width:50%;">
 
@@ -33,8 +32,7 @@ Report auto-generated on: 2025-03-19 01:40:57
 | HBASE | apache/hbase-thirdparty | nihaljain | 5 | 2 | 7 |
 | PHOENIX | apache/phoenix | nihaljain | 5 | 2 | 7 |
 | PHOENIX | apache/phoenix-queryserver | nihaljain | 5 | 0 | 5 |
-| ZOOKEEPER | apache/zookeeper | nihaljain | 2 | 0 | 2 |
 | PINOT | pinot-contrib/pinot-docs | nihaljain | 2 | 0 | 2 |
+| ZOOKEEPER | apache/zookeeper | nihaljain | 2 | 0 | 2 |
 | PHOENIX | apache/phoenix-thirdparty | nihaljain | 1 | 0 | 1 |
-| HADOOP | apache/hadoop | nihaljain | 1 | 0 | 1 |
 | PINOT | apache/pinot | nihaljain | 1 | 0 | 1 |
