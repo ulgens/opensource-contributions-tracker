@@ -1,13 +1,13 @@
-Project Name,Repository,User,Commits,Pull Requests (Open),Rank,Overall Contribution
-Apache HBase,apache/hbase,nihaljain,76,5,25,81
-Apache HBase,apache/hbase-connectors,nihaljain,7,1,6,8
-Apache HBase,apache/hbase-thirdparty,nihaljain,5,2,10,7
-Apache HBase,apache/hbase-operator-tools,nihaljain,13,0,4,13
-Apache Hadoop,apache/hadoop,nihaljain,1,0,-1,1
-Apache Phoenix,apache/phoenix,nihaljain,5,2,56,7
-Apache Phoenix,apache/phoenix-omid,nihaljain,10,0,10,10
-Apache Phoenix,apache/phoenix-queryserver,nihaljain,5,0,4,5
-Apache Phoenix,apache/phoenix-thirdparty,nihaljain,1,0,4,1
-Apache Pinot,pinot-contrib/pinot-docs,nihaljain,2,0,57,2
-Apache Pinot,apache/pinot,nihaljain,1,0,338,1
-Apache Zookeeper,apache/zookeeper,nihaljain,2,0,76,2
+Project Key,Repository,Repository URL,Repository Description,Repository Avatar,User,User Avatar,User URL,Commits,Pull Requests (Open),Rank,Overall Contribution
+Apache HBase,apache/hbase,https://github.com/apache/hbase,Apache HBase,https://avatars.githubusercontent.com/u/47359?v=4,Nihal Jain,https://avatars.githubusercontent.com/u/3429351?v=4,https://github.com/NihalJain,76,5,25,81
+Apache HBase,apache/hbase-connectors,https://github.com/apache/hbase-connectors,Apache HBase Connectors,https://avatars.githubusercontent.com/u/47359?v=4,Nihal Jain,https://avatars.githubusercontent.com/u/3429351?v=4,https://github.com/NihalJain,7,1,6,8
+Apache HBase,apache/hbase-thirdparty,https://github.com/apache/hbase-thirdparty,Mirror of Apache HBase Third Party Libs,https://avatars.githubusercontent.com/u/47359?v=4,Nihal Jain,https://avatars.githubusercontent.com/u/3429351?v=4,https://github.com/NihalJain,5,2,10,7
+Apache HBase,apache/hbase-operator-tools,https://github.com/apache/hbase-operator-tools,Apache HBase Operator Tools,https://avatars.githubusercontent.com/u/47359?v=4,Nihal Jain,https://avatars.githubusercontent.com/u/3429351?v=4,https://github.com/NihalJain,13,0,4,13
+Apache Hadoop,apache/hadoop,https://github.com/apache/hadoop,Apache Hadoop,https://avatars.githubusercontent.com/u/47359?v=4,Nihal Jain,https://avatars.githubusercontent.com/u/3429351?v=4,https://github.com/NihalJain,1,0,-1,1
+Apache Phoenix,apache/phoenix,https://github.com/apache/phoenix,Apache Phoenix,https://avatars.githubusercontent.com/u/47359?v=4,Nihal Jain,https://avatars.githubusercontent.com/u/3429351?v=4,https://github.com/NihalJain,5,2,56,7
+Apache Phoenix,apache/phoenix-omid,https://github.com/apache/phoenix-omid,Mirror of Apache Omid Incubator,https://avatars.githubusercontent.com/u/47359?v=4,Nihal Jain,https://avatars.githubusercontent.com/u/3429351?v=4,https://github.com/NihalJain,10,0,10,10
+Apache Phoenix,apache/phoenix-queryserver,https://github.com/apache/phoenix-queryserver,Apache Phoenix Query Server,https://avatars.githubusercontent.com/u/47359?v=4,Nihal Jain,https://avatars.githubusercontent.com/u/3429351?v=4,https://github.com/NihalJain,5,0,4,5
+Apache Phoenix,apache/phoenix-thirdparty,https://github.com/apache/phoenix-thirdparty,Apache phoenix Third Party Libs,https://avatars.githubusercontent.com/u/47359?v=4,Nihal Jain,https://avatars.githubusercontent.com/u/3429351?v=4,https://github.com/NihalJain,1,0,4,1
+Apache Pinot,pinot-contrib/pinot-docs,https://github.com/pinot-contrib/pinot-docs,Apache Pinot Documentation,https://avatars.githubusercontent.com/u/62676312?v=4,Nihal Jain,https://avatars.githubusercontent.com/u/3429351?v=4,https://github.com/NihalJain,2,0,57,2
+Apache Pinot,apache/pinot,https://github.com/apache/pinot,Apache Pinot - A realtime distributed OLAP datastore,https://avatars.githubusercontent.com/u/47359?v=4,Nihal Jain,https://avatars.githubusercontent.com/u/3429351?v=4,https://github.com/NihalJain,1,0,338,1
+Apache Zookeeper,apache/zookeeper,https://github.com/apache/zookeeper,Apache ZooKeeper,https://avatars.githubusercontent.com/u/47359?v=4,Nihal Jain,https://avatars.githubusercontent.com/u/3429351?v=4,https://github.com/NihalJain,2,0,76,2
